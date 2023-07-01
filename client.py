@@ -1,9 +1,10 @@
 from optparse import OptionParser
 from lib.Controllers.MovieController import MovieController
+from lib.Controllers.AboutController import AboutController
 
 def main():
 
-    usage = "usage: %prog [options] RESOURCE= help | movies"
+    usage = "usage: %prog [options] RESOURCE= help | movies | about"
     parser = OptionParser(usage)
     parser.add_option(
         "-a",
@@ -31,7 +32,7 @@ def main():
     (options, args) = parser.parse_args()
 
     resource = 'help'
-    resources = ['help', 'movies']
+    resources = ['help', 'movies', 'about']
 
     # set required resource     
     if len(args) > 0:
@@ -65,7 +66,12 @@ def main():
             controller.insert(options.data)
         else:
             parser.print_help()
-
+           
+    # Movies resource and its options 
+    if resource == 'about':
+        controller = AboutController()    
+        controller.get()
+        
 if __name__ == "__main__":
     main()
 
