@@ -1,10 +1,12 @@
 from optparse import OptionParser
 from lib.Controllers.MovieController import MovieController
 from lib.Controllers.AboutController import AboutController
+from lib.Helpers.Date import Date
+from lib.Helpers.User import User
 
 def main():
 
-    usage = "usage: %prog [options] RESOURCE= help | movies | about"
+    usage = "usage: %prog [options] RESOURCE= help | user | date |movies | about"
     parser = OptionParser(usage)
     parser.add_option(
         "-a",
@@ -32,7 +34,7 @@ def main():
     (options, args) = parser.parse_args()
 
     resource = 'help'
-    resources = ['help', 'movies', 'about']
+    resources = ['help','user','date','movies', 'about']
 
     # set required resource     
     if len(args) > 0:
@@ -44,8 +46,20 @@ def main():
 
 
     # Help resource and it options
-    if resource == 'help':
+    if resource == 'help':        # print help message
         parser.print_help()
+        exit();
+
+    # this should have a proper controller and views
+    if resource == 'user':
+        u = User()
+        print(f"Logged as : {u.get()}\nBelongs to groups: {u.getGroups()}")
+        exit();
+
+    # this should have a proper controller and views
+    if resource == 'date':
+        d = Date()
+        print(f"Date today : {d.get()}")
         exit();
 
    

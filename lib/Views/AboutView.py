@@ -2,6 +2,7 @@
 MoviesView - display about information
     Methods:
         __init__(self, test = False) - constructor
+        get(data) - get info about this software    
 """
 class AboutView:
 
@@ -14,6 +15,11 @@ class AboutView:
         self.__test = test
 
 
+    """
+    get(data) - get info about this software
+        Input:
+            data - object - object with properties, all strings, title, version, author, licence    
+    """
     def get(self,data):
         print("**********************************")
         print(f'\tSoftware: {data["title"]}')
@@ -21,3 +27,5 @@ class AboutView:
         print(f'\tAuthor: {data["author"]}')
         print(f'\tCopyrights: {data["licence"]}')
         print("**********************************\n")
+        
+        return True

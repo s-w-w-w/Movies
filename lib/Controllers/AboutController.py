@@ -1,9 +1,14 @@
 from lib.Views.AboutView import AboutView 
 
+"""
+AboutController - manage info about this application
+"""
 class AboutController():
 
+    """
+    __init__() - constructor
+    """
     def __init__(self):
-        # date (y,m,d) = datetime.date.today().isoformat().split("-")
         self.__title = 'Movie database'
         self.__version = '1.0.0'
         self.__author = 'Sylwester Wojnowski'
